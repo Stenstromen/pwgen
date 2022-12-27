@@ -5,16 +5,18 @@ import getRandomPass from "./Pwgen";
 import Output from "./components/Output";
 import Length from "./components/Length";
 import Options from "./components/Options";
+import Generate from "./components/Generate";
 
 function App() {
   const [pwLength, setPwLength] = useState<number>(16);
-  const [capLetters, setCapLetters] = useState<boolean>(true);
+  const [capLetters, setCapLetters] = useState<boolean>(false);
   const [letters, setLetters] = useState<boolean>(true);
   const [numbers, setNumbers] = useState<boolean>(true);
   const [symbols, setSymbols] = useState<boolean>(false);
   const [output, setOutput] = useState<string>("");
 
   const generatePassword = (): void => {
+    console.log("LOL")
     return setOutput(
       getRandomPass({
         long: pwLength,
@@ -40,11 +42,7 @@ function App() {
         symbols={symbols}
         setSymbols={setSymbols}
       />
-      <h1>Uppercase</h1>
-      <h1>Lowercase</h1>
-      <h1>Numbers</h1>
-      <h1>Symbols</h1>
-      <h1>Generate</h1>
+      <Generate generatePassword={generatePassword}/>
     </div>
   );
 }

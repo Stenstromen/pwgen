@@ -22,14 +22,36 @@ function Options({
   setSymbols: (symbols: boolean) => void;
 }) {
   return (
-    <>
-      <InputGroup>
-        <InputGroup.Checkbox aria-label="Checkbox for following text input" />
-        <p>lol</p>
-        <InputGroup.Checkbox aria-label="Checkbox for following text input" />
-        <InputGroup.Checkbox aria-label="Checkbox for following text input" />
-      </InputGroup>
-    </>
+    <Form>
+      <Form.Check
+        type="switch"
+        id="custom-switch"
+        label="Letters"
+        defaultChecked={letters}
+        onChange={() => setLetters(!letters)}
+      />
+      <Form.Check
+        type="switch"
+        id="custom-switch"
+        label="Captial Letters"
+        defaultChecked={capLetters}
+        onChange={() => setCapLetters(!capLetters)}
+      />
+      <Form.Check
+        type="switch"
+        id="custom-switch"
+        label="Numbers"
+        defaultChecked={numbers}
+        onChange={() => setNumbers(!numbers)}
+      />
+      <Form.Check
+        type="switch"
+        id="custom-switch"
+        label="Symbols"
+        defaultChecked={symbols}
+        onChange={() => setSymbols(!symbols)}
+      />
+    </Form>
   );
 }
 

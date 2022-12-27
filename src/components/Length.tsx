@@ -9,7 +9,7 @@ function Length({
   setPwLength: (pwLength: number) => void;
 }) {
   return (
-    <div className="d-flex flex-column align-items-center">
+    <>
       <Form.Label>Range</Form.Label>
       <div className="d-flex">
         <p>
@@ -30,7 +30,7 @@ function Length({
       <p>
         <strong>{pwLength}</strong>
       </p>
-    </div>
+    </>
   );
 }
 
