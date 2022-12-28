@@ -9,8 +9,8 @@ function Length({
   setPwLength: (pwLength: number) => void;
 }) {
   return (
-    <>
-      <Form.Label>Range</Form.Label>
+    <div style={{ width: "75%" }} className="d-flex flex-column">
+      &nbsp;
       <div className="d-flex">
         <p>
           <strong>4</strong>
@@ -27,10 +27,13 @@ function Length({
           <strong>32</strong>
         </p>
       </div>
-      <p>
-        <strong>{pwLength}</strong>
-      </p>
-    </>
+      <div className="d-flex justify-content-center">
+        <p>
+          <strong>{pwLength} Characters</strong>
+        </p>
+      </div>
+      &nbsp;
+    </div>
   );
 }
 
