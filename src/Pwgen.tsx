@@ -4,24 +4,23 @@ const symbolsList = "!#$%&=?-_";
 
 function getRandomPass({
   long,
-  letters,
-  capitalLetters,
-  numbers,
-  symbols,
+  option,
 }: {
   long: number;
-  letters: boolean;
-  capitalLetters: boolean;
-  numbers: boolean;
-  symbols: boolean;
+  option: {
+    capLetters: boolean;
+    letters: boolean;
+    numbers: boolean;
+    symbols: boolean;
+  };
 }): string {
   let randomPass = "";
   const validContidions: string[] = [];
 
-  if (letters) validContidions.push(lettersList);
-  if (capitalLetters) validContidions.push(lettersList.toUpperCase());
-  if (numbers) validContidions.push(numbersList);
-  if (symbols) validContidions.push(symbolsList);
+  if (option.letters) validContidions.push(lettersList);
+  if (option.capLetters) validContidions.push(lettersList.toUpperCase());
+  if (option.numbers) validContidions.push(numbersList);
+  if (option.symbols) validContidions.push(symbolsList);
 
   for (let i = 0; i < long; i++) {
     const pos = Math.floor(Math.random() * validContidions.length);

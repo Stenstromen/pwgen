@@ -2,24 +2,22 @@ import React from "react";
 import Form from "react-bootstrap/Form";
 
 function Options({
-  capLetters,
-  setCapLetters,
-  letters,
-  setLetters,
-  numbers,
-  setNumbers,
-  symbols,
-  setSymbols,
+  option,
+  setOption,
   isMobile,
 }: {
-  capLetters: boolean;
-  setCapLetters: (capLetters: boolean) => void;
-  letters: boolean;
-  setLetters: (letters: boolean) => void;
-  numbers: boolean;
-  setNumbers: (numbers: boolean) => void;
-  symbols: boolean;
-  setSymbols: (symbols: boolean) => void;
+  option: {
+    capLetters: boolean;
+    letters: boolean;
+    numbers: boolean;
+    symbols: boolean;
+  };
+  setOption: (option: {
+    capLetters: boolean;
+    letters: boolean;
+    numbers: boolean;
+    symbols: boolean;
+  }) => void;
   isMobile: boolean;
 }) {
   return (
@@ -39,37 +37,39 @@ function Options({
             : "d-inline-flex d-flex"
         }
       >
-        <div style={{marginRight: isMobile ? "30px" : ""}}>
+        <div style={{ marginRight: isMobile ? "30px" : "" }}>
           <Form.Check
             type="switch"
             id="custom-switch"
             label="Lower (abc)"
-            defaultChecked={letters}
-            onChange={() => setLetters(!letters)}
+            defaultChecked={option.letters}
+            onChange={() => setOption({ ...option, letters: !option.letters })}
           />
           <Form.Check
             type="switch"
             id="custom-switch"
             label="Upper (ABC)"
-            defaultChecked={capLetters}
-            onChange={() => setCapLetters(!capLetters)}
+            defaultChecked={option.capLetters}
+            onChange={() =>
+              setOption({ ...option, capLetters: !option.capLetters })
+            }
           />
         </div>
-        {isMobile ? null : (<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>)}
+        {isMobile ? null : <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>}
         <div>
           <Form.Check
             type="switch"
             id="custom-switch"
             label="Numbers (123)"
-            defaultChecked={numbers}
-            onChange={() => setNumbers(!numbers)}
+            defaultChecked={option.numbers}
+            onChange={() => setOption({ ...option, numbers: !option.numbers })}
           />
           <Form.Check
             type="switch"
             id="custom-switch"
             label="Symbols (!#$)"
-            defaultChecked={symbols}
-            onChange={() => setSymbols(!symbols)}
+            defaultChecked={option.symbols}
+            onChange={() => setOption({ ...option, symbols: !option.symbols })}
           />
         </div>
       </Form>

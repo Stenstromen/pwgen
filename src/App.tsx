@@ -10,21 +10,32 @@ import Generate from "./components/Generate";
 function App() {
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const [pwLength, setPwLength] = useState<number>(15);
-  const [capLetters, setCapLetters] = useState<boolean>(false);
-  const [letters, setLetters] = useState<boolean>(true);
-  const [numbers, setNumbers] = useState<boolean>(true);
-  const [symbols, setSymbols] = useState<boolean>(false);
+  const [option, setOption] = useState<{
+    capLetters: boolean;
+    letters: boolean;
+    numbers: boolean;
+    symbols: boolean;
+  }>({
+    capLetters: false,
+    letters: true,
+    numbers: true,
+    symbols: false,
+  });
+
   const [output, setOutput] = useState<string>("");
 
   const generatePassword = (): void => {
-    if (!capLetters && !letters && !numbers && !symbols) return;
+    if (
+      !option.capLetters &&
+      !option.letters &&
+      !option.numbers &&
+      !option.symbols
+    )
+      return;
     return setOutput(
       getRandomPass({
         long: pwLength,
-        capitalLetters: capLetters,
-        letters: letters,
-        numbers: numbers,
-        symbols: symbols,
+        option,
       })
     );
   };
@@ -40,7 +51,7 @@ function App() {
 
   useEffect(() => {
     return generatePassword();
-  }, []);
+  }, [pwLength, option]);
 
   useEffect(() => {
     return window.innerWidth < 425 ? setIsMobile(true) : setIsMobile(false);
@@ -69,17 +80,7 @@ function App() {
         &nbsp;
         <Output output={output} copyPass={copyPass} isMobile={isMobile} />
         <Length pwLength={pwLength} setPwLength={setPwLength} />
-        <Options
-          capLetters={capLetters}
-          setCapLetters={setCapLetters}
-          letters={letters}
-          setLetters={setLetters}
-          numbers={numbers}
-          setNumbers={setNumbers}
-          symbols={symbols}
-          setSymbols={setSymbols}
-          isMobile={isMobile}
-        />
+        <Options option={option} setOption={setOption} isMobile={isMobile} />
         <Generate generatePassword={generatePassword} />
       </div>
     </div>
