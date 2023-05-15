@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import { saveSettings, loadSettings } from "./LocalStorage";
 import getRandomPass from "./Pwgen";
 import Output from "./components/Output";
 import Length from "./components/Length";
@@ -9,20 +10,20 @@ import Generate from "./components/Generate";
 
 function App() {
   const [isMobile, setIsMobile] = useState<boolean>(false);
-  const [pwLength, setPwLength] = useState<number>(15);
+  const [output, setOutput] = useState<string>("");
   const [option, setOption] = useState<{
+    length: number;
     capLetters: boolean;
     letters: boolean;
     numbers: boolean;
     symbols: boolean;
   }>({
+    length: 15,
     capLetters: false,
     letters: true,
     numbers: true,
     symbols: false,
   });
-
-  const [output, setOutput] = useState<string>("");
 
   const generatePassword = (): void => {
     if (
@@ -34,7 +35,6 @@ function App() {
       return;
     return setOutput(
       getRandomPass({
-        long: pwLength,
         option,
       })
     );
@@ -50,8 +50,13 @@ function App() {
   };
 
   useEffect(() => {
-    return generatePassword();
-  }, [pwLength, option]);
+    return loadSettings(setOption);
+  }, []);
+
+  useEffect(() => {
+    generatePassword();
+    saveSettings(option);
+  }, [option]);
 
   useEffect(() => {
     return window.innerWidth < 425 ? setIsMobile(true) : setIsMobile(false);
@@ -79,7 +84,7 @@ function App() {
         <h1>Password Generator</h1>
         &nbsp;
         <Output output={output} copyPass={copyPass} isMobile={isMobile} />
-        <Length pwLength={pwLength} setPwLength={setPwLength} />
+        <Length option={option} setOption={setOption} />
         <Options option={option} setOption={setOption} isMobile={isMobile} />
         <Generate generatePassword={generatePassword} />
       </div>

@@ -7,12 +7,14 @@ function Options({
   isMobile,
 }: {
   option: {
+    length: number;
     capLetters: boolean;
     letters: boolean;
     numbers: boolean;
     symbols: boolean;
   };
   setOption: (option: {
+    length: number;
     capLetters: boolean;
     letters: boolean;
     numbers: boolean;
@@ -42,14 +44,14 @@ function Options({
             type="switch"
             id="custom-switch"
             label="Lower (abc)"
-            defaultChecked={option.letters}
+            checked={option.letters}
             onChange={() => setOption({ ...option, letters: !option.letters })}
           />
           <Form.Check
             type="switch"
             id="custom-switch"
             label="Upper (ABC)"
-            defaultChecked={option.capLetters}
+            checked={option.capLetters}
             onChange={() =>
               setOption({ ...option, capLetters: !option.capLetters })
             }
@@ -61,14 +63,14 @@ function Options({
             type="switch"
             id="custom-switch"
             label="Numbers (123)"
-            defaultChecked={option.numbers}
+            checked={option.numbers}
             onChange={() => setOption({ ...option, numbers: !option.numbers })}
           />
           <Form.Check
             type="switch"
             id="custom-switch"
             label="Symbols (!#$)"
-            defaultChecked={option.symbols}
+            checked={option.symbols}
             onChange={() => setOption({ ...option, symbols: !option.symbols })}
           />
         </div>

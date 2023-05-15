@@ -2,11 +2,23 @@ import React from "react";
 import Form from "react-bootstrap/Form";
 
 function Length({
-  pwLength,
-  setPwLength,
+  option,
+  setOption,
 }: {
-  pwLength: number;
-  setPwLength: (pwLength: number) => void;
+  option: {
+    length: number;
+    capLetters: boolean;
+    letters: boolean;
+    numbers: boolean;
+    symbols: boolean;
+  };
+  setOption: (option: {
+    length: number;
+    capLetters: boolean;
+    letters: boolean;
+    numbers: boolean;
+    symbols: boolean;
+  }) => void;
 }) {
   return (
     <div style={{ width: "75%" }} className="d-flex flex-column">
@@ -19,8 +31,10 @@ function Length({
         <Form.Range
           min="4"
           max="32"
-          onChange={(e) => setPwLength(parseInt(e.target.value))}
-          value={pwLength}
+          onChange={(e) =>
+            setOption({ ...option, length: parseInt(e.target.value) })
+          }
+          value={option.length}
         />
         &nbsp;
         <p>
@@ -29,7 +43,7 @@ function Length({
       </div>
       <div className="d-flex justify-content-center">
         <p>
-          <strong>{pwLength} Characters</strong>
+          <strong>{option.length} Characters</strong>
         </p>
       </div>
       &nbsp;
