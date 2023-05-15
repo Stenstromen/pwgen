@@ -1,10 +1,6 @@
-export const saveSettings = (option: {
-  length: number;
-  capLetters: boolean;
-  letters: boolean;
-  numbers: boolean;
-  symbols: boolean;
-}): void => {
+import { Option } from "./Types";
+
+export const saveSettings = (option: Option): void => {
   if (
     !option.capLetters &&
     !option.letters &&
@@ -15,15 +11,7 @@ export const saveSettings = (option: {
   localStorage.setItem("pwgen.cz_options", JSON.stringify(option));
 };
 
-export const loadSettings = (
-  setOption: (option: {
-    length: number;
-    capLetters: boolean;
-    letters: boolean;
-    numbers: boolean;
-    symbols: boolean;
-  }) => void
-): void => {
+export const loadSettings = (setOption: (option: Option) => void): void => {
   const savedOptions = localStorage.getItem("pwgen.cz_options");
   if (savedOptions) {
     const savedOptionsObj = JSON.parse(savedOptions);

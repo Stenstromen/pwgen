@@ -1,3 +1,5 @@
+import { Option } from "./Types";
+
 const lettersList = "abcdefghijklmnopqrstuvwxyz";
 const numbersList = "1234567890";
 const symbolsList = "!#$%&=?-_";
@@ -5,13 +7,7 @@ const symbolsList = "!#$%&=?-_";
 function getRandomPass({
   option,
 }: {
-  option: {
-    length: number;
-    capLetters: boolean;
-    letters: boolean;
-    numbers: boolean;
-    symbols: boolean;
-  };
+  option: Option
 }): string {
   let randomPass = "";
   const validContidions: string[] = [];
