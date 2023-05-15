@@ -3,11 +3,10 @@ const numbersList = "1234567890";
 const symbolsList = "!#$%&=?-_";
 
 function getRandomPass({
-  long,
   option,
 }: {
-  long: number;
   option: {
+    length: number;
     capLetters: boolean;
     letters: boolean;
     numbers: boolean;
@@ -22,7 +21,7 @@ function getRandomPass({
   if (option.numbers) validContidions.push(numbersList);
   if (option.symbols) validContidions.push(symbolsList);
 
-  for (let i = 0; i < long; i++) {
+  for (let i = 0; i < option.length; i++) {
     const pos = Math.floor(Math.random() * validContidions.length);
     randomPass = randomPass + getRandomChar(validContidions[pos]);
   }
