@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import { Option } from "./Types";
 import { saveSettings, loadSettings } from "./LocalStorage";
 import getRandomPass from "./Pwgen";
 import Output from "./components/Output";
@@ -11,13 +12,7 @@ import Generate from "./components/Generate";
 function App() {
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const [output, setOutput] = useState<string>("");
-  const [option, setOption] = useState<{
-    length: number;
-    capLetters: boolean;
-    letters: boolean;
-    numbers: boolean;
-    symbols: boolean;
-  }>({
+  const [option, setOption] = useState<Option>({
     length: 15,
     capLetters: false,
     letters: true,

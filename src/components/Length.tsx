@@ -1,24 +1,13 @@
 import React from "react";
 import Form from "react-bootstrap/Form";
+import { Option } from "../Types";
 
 function Length({
   option,
   setOption,
 }: {
-  option: {
-    length: number;
-    capLetters: boolean;
-    letters: boolean;
-    numbers: boolean;
-    symbols: boolean;
-  };
-  setOption: (option: {
-    length: number;
-    capLetters: boolean;
-    letters: boolean;
-    numbers: boolean;
-    symbols: boolean;
-  }) => void;
+  option: Option;
+  setOption: (option: Option) => void;
 }) {
   return (
     <div style={{ width: "75%" }} className="d-flex flex-column">
