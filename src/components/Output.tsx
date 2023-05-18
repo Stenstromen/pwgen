@@ -1,31 +1,21 @@
 import React from "react";
+import { OutputProps } from "../Types";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 
-function Output({
-  output,
-  copyPass,
-  isMobile,
-}: {
-  output: string;
-  copyPass: () => void;
-  isMobile: boolean;
-}) {
+function Output({ output, copyPass }: OutputProps) {
   return (
-    <InputGroup
-      size="lg"
-      style={{ width: "75%", paddingTop: isMobile ? "10px" : "20px" }}
-    >
+    <InputGroup size="lg" className="output-InputGroup">
       <Form.Control
         readOnly
         aria-label="Large"
         aria-describedby="inputGroup-sizing-sm"
         placeholder={output}
       />
-      <Button onClick={copyPass} variant="primary" id="button-addon2">
-        Copy
-      </Button>
+        <Button onClick={copyPass} variant="primary" id="button-addon2">
+          Copy
+        </Button>
     </InputGroup>
   );
 }
