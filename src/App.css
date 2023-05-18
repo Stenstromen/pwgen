@@ -45,3 +45,29 @@ body {
     transform: rotate(360deg);
   }
 }
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.app-content {
+  background-color: white;
+  margin-top: 20px;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 5px;
+  width: 1000px;
+  height: 95vh;
+}
+
+@media (max-width: 425px) {
+  .app-content {
+    width: 385px;
+    height: 85vh;
+  }
+}

@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
+import _ from "lodash";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { Option } from "./Types";
@@ -20,7 +21,7 @@ function App() {
     symbols: false,
   });
 
-  const generatePassword = (): void => {
+  const generatePassword = useCallback(() => {
     if (
       !option.capLetters &&
       !option.letters &&
@@ -28,21 +29,21 @@ function App() {
       !option.symbols
     )
       return;
-    return setOutput(
+    setOutput(
       getRandomPass({
         option,
       })
     );
-  };
+  }, [option]);
 
-  const copyPass = (): void => {
+  const copyPass = useCallback(() => {
     const oldOutput = output;
     navigator.clipboard.writeText(output);
     setOutput("Copied To Clipboard!");
     setTimeout(() => {
       setOutput(oldOutput);
     }, 1500);
-  };
+  }, [output]);
 
   useEffect(() => {
     return loadSettings(setOption);
@@ -53,29 +54,21 @@ function App() {
     saveSettings(option);
   }, [option]);
 
-  useEffect(() => {
+  const checkIsMobile = useCallback(() => {
     return window.innerWidth < 425 ? setIsMobile(true) : setIsMobile(false);
   }, []);
 
   useEffect(() => {
-    window.addEventListener("resize", () => {
-      return window.innerWidth < 425 ? setIsMobile(true) : setIsMobile(false);
-    });
-  }, []);
+    checkIsMobile();
+    window.addEventListener("resize", _.throttle(checkIsMobile, 200));
+    return () => {
+      window.removeEventListener("resize", checkIsMobile);
+    };
+  }, [checkIsMobile]);
 
   return (
-    <div className="d-flex flex-column align-items-center">
-      <div
-        style={{
-          backgroundColor: "white",
-          width: isMobile ? "385px" : "1000px",
-          height: isMobile ? "85vh" : "95vh",
-          marginTop: "20px",
-          paddingTop: "20px",
-          paddingBottom: "40px",
-        }}
-        className="d-flex flex-column align-items-center rounded"
-      >
+    <div className="app-container">
+      <div className="app-content">
         <h1>Password Generator</h1>
         &nbsp;
         <Output output={output} copyPass={copyPass} isMobile={isMobile} />

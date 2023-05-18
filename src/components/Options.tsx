@@ -31,14 +31,16 @@ function Options({
         <div style={{ marginRight: isMobile ? "30px" : "" }}>
           <Form.Check
             type="switch"
-            id="custom-switch"
+            id="letters-switch"
+            aria-label="Lower"
             label="Lower (abc)"
             checked={option.letters}
             onChange={() => setOption({ ...option, letters: !option.letters })}
           />
           <Form.Check
             type="switch"
-            id="custom-switch"
+            id="capLetters-switch"
+            aria-label="Large"
             label="Upper (ABC)"
             checked={option.capLetters}
             onChange={() =>
@@ -50,14 +52,16 @@ function Options({
         <div>
           <Form.Check
             type="switch"
-            id="custom-switch"
+            id="numbers-switch"
+            aria-label="Numbers"
             label="Numbers (123)"
             checked={option.numbers}
             onChange={() => setOption({ ...option, numbers: !option.numbers })}
           />
           <Form.Check
             type="switch"
-            id="custom-switch"
+            id="symbols-switch"
+            aria-label="Symbols"
             label="Symbols (!#$)"
             checked={option.symbols}
             onChange={() => setOption({ ...option, symbols: !option.symbols })}
