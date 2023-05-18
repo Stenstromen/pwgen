@@ -5,30 +5,14 @@ import { Option } from "../Types";
 function Options({
   option,
   setOption,
-  isMobile,
 }: {
   option: Option;
   setOption: (option: Option) => void;
-  isMobile: boolean;
 }) {
   return (
-    <div
-      style={{ width: "100%", paddingBottom: isMobile ? "60px" : "" }}
-      className={
-        isMobile
-          ? "d-flex justify-content-center"
-          : "d-flex justify-content-center flex-grow-1"
-      }
-    >
-      <Form
-        style={{ fontSize: "30px", paddingTop: isMobile ? "10px" : "40px" }}
-        className={
-          isMobile
-            ? "d-flex flex-column align-items-center"
-            : "d-inline-flex d-flex"
-        }
-      >
-        <div style={{ marginRight: isMobile ? "30px" : "" }}>
+    <div className="options-container">
+      <Form className="options-form">
+        <div className="form-check-group">
           <Form.Check
             type="switch"
             id="letters-switch"
@@ -48,7 +32,7 @@ function Options({
             }
           />
         </div>
-        {isMobile ? null : <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>}
+        <p className="options-space"></p>
         <div>
           <Form.Check
             type="switch"

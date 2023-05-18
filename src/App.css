@@ -65,9 +65,49 @@ body {
   height: 95vh;
 }
 
+.options-container {
+  width: 100%;
+  padding-bottom: 171px;
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.options-form {
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.form-check-group {
+  margin-right: 0px;
+}
+
+.options-space {
+  margin-right: 1.1em;
+}
+
 @media (max-width: 425px) {
   .app-content {
     width: 385px;
     height: 85vh;
+  }
+  .options-container {
+    padding-bottom: 0;
+    flex-grow: 1;
+  }
+
+  .options-form {
+    padding-top: 40px;
+    display: inline-flex;
+    flex-direction: column;
+  }
+
+  .form-check-group {
+    margin-right: 30px;
+  }
+
+  .options-space {
+    margin: 0em;
   }
 }
