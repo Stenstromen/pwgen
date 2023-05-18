@@ -70,6 +70,10 @@ body {
   padding-top: 20px;
 }
 
+.length-Form {
+  width: 75%;
+}
+
 .options-container {
   width: 100%;
   padding-bottom: 171px;
@@ -101,6 +105,10 @@ body {
   .output-InputGroup {
     width: 95%;
     padding-top: 10px;
+  }
+
+  .length-Form {
+    width: 85%;
   }
 
   .options-container {
