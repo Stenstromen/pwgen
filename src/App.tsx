@@ -73,7 +73,7 @@ function App() {
         &nbsp;
         <Output output={output} copyPass={copyPass} isMobile={isMobile} />
         <Length option={option} setOption={setOption} />
-        <Options option={option} setOption={setOption} isMobile={isMobile} />
+        <Options option={option} setOption={setOption} />
         <Generate generatePassword={generatePassword} />
       </div>
     </div>
