@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback } from "react";
-import _ from "lodash";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { Option } from "./Types";
@@ -11,7 +10,6 @@ import Options from "./components/Options";
 import Generate from "./components/Generate";
 
 function App() {
-  const [isMobile, setIsMobile] = useState<boolean>(false);
   const [output, setOutput] = useState<string>("");
   const [option, setOption] = useState<Option>({
     length: 15,
@@ -54,24 +52,12 @@ function App() {
     saveSettings(option);
   }, [option]);
 
-  const checkIsMobile = useCallback(() => {
-    return window.innerWidth < 425 ? setIsMobile(true) : setIsMobile(false);
-  }, []);
-
-  useEffect(() => {
-    checkIsMobile();
-    window.addEventListener("resize", _.throttle(checkIsMobile, 200));
-    return () => {
-      window.removeEventListener("resize", checkIsMobile);
-    };
-  }, [checkIsMobile]);
-
   return (
     <div className="app-container">
       <div className="app-content">
         <h1>Password Generator</h1>
         &nbsp;
-        <Output output={output} copyPass={copyPass} isMobile={isMobile} />
+        <Output output={output} copyPass={copyPass} />
         <Length option={option} setOption={setOption} />
         <Options option={option} setOption={setOption} />
         <Generate generatePassword={generatePassword} />
