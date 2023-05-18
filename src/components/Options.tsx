@@ -1,14 +1,8 @@
 import React from "react";
 import Form from "react-bootstrap/Form";
-import { Option } from "../Types";
+import { OptionProps } from "../Types";
 
-function Options({
-  option,
-  setOption,
-}: {
-  option: Option;
-  setOption: (option: Option) => void;
-}) {
+function Options({ option, setOption }: OptionProps) {
   return (
     <div className="options-container">
       <Form className="options-form">
