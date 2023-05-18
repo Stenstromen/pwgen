@@ -18,6 +18,7 @@ function Length({
         </p>
         &nbsp;
         <Form.Range
+          id="length-range"
           min="4"
           max="32"
           onChange={(e) =>
