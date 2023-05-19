@@ -13,6 +13,7 @@ function Length({ option, setOption }: OptionProps) {
         &nbsp;
         <Form.Range
           id="length-range"
+          aria-label="Password length"
           min="4"
           max="32"
           onChange={(e) =>
