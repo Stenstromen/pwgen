@@ -21,14 +21,14 @@
     "web-vitals": "^2.1.4"
   },
   "reactSnap": {
-    "inlineCss": true
+    "inlineCss": false
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "GENERATE_SOURCEMAP=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "postbuild": "react-snap"
+    "postbuild": "react-snap && purgecss --css build/static/css/*.css --content build/index.html build/static/js/*.js --output build/static/css"
   },
   "eslintConfig": {
     "extends": [
@@ -54,6 +54,7 @@
     "@typescript-eslint/parser": "^5.47.1",
     "eslint": "^8.30.0",
     "eslint-plugin-react": "^7.31.11",
+    "purgecss": "^5.0.0",
     "react-snap": "^1.23.0"
   }
 }
