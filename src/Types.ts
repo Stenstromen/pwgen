@@ -12,4 +12,5 @@ export interface Option {
   letters: boolean;
   numbers: boolean;
   symbols: boolean;
+  avoidSimilar: boolean;
 }

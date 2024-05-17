@@ -26,8 +26,7 @@ function Options({ option, setOption }: OptionProps) {
             }
           />
         </div>
-        <p className="options-space"></p>
-        <div>
+        <div className="form-check-group">
           <Form.Check
             type="switch"
             id="numbers-switch"
@@ -43,6 +42,18 @@ function Options({ option, setOption }: OptionProps) {
             label="Symbols (!#$)"
             checked={option.symbols}
             onChange={() => setOption({ ...option, symbols: !option.symbols })}
+          />
+        </div>
+        <div className="form-check-single">
+          <Form.Check
+            type="switch"
+            id="similar-switch"
+            aria-label="Avoid"
+            label="Avoid (il1Lo0O)"
+            checked={option.avoidSimilar}
+            onChange={() =>
+              setOption({ ...option, avoidSimilar: !option.avoidSimilar })
+            }
           />
         </div>
       </Form>

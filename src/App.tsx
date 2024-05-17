@@ -17,6 +17,7 @@ function App() {
     letters: true,
     numbers: true,
     symbols: false,
+    avoidSimilar: true,
   });
 
   const generatePassword = useCallback(() => {

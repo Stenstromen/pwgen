@@ -7,6 +7,7 @@ describe("getRandomPass", () => {
     numbers: true,
     symbols: true,
     length: 32,
+    avoidSimilar: false,
   };
 
   it("should generate a random password with the specified length and character options", () => {
