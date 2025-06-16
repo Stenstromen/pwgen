@@ -24,7 +24,7 @@
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "@vitejs/plugin-react": "^4.2.1",
-    "purgecss": "^6.0.0",
+    "purgecss": "^7.0.2",
     "typescript": "^5.2.2",
     "vite": "^6.0.13",
     "vitest": "^3.1.2"
