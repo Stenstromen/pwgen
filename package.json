@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "dependencies": {
-    "@types/gtag.js": "^0.0.12",
+    "@types/gtag.js": "^0.0.20",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "bootstrap": "^5.2.3",
