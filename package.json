@@ -26,7 +26,7 @@
     "@vitejs/plugin-react": "^4.7.0",
     "purgecss": "^7.0.2",
     "typescript": "^5.2.2",
-    "vite": "^7.0.6",
+    "vite": "^7.1.1",
     "vitest": "^3.2.4"
   }
 }
